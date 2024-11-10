@@ -63,7 +63,7 @@ public class MarriageBureauApplication {
 		user.setReligion("sikh");
 		user.setCaste("ramgharia");
 		user.setDateOfBirth("16/11/2000");
-		user.setHeight(6.8);
+		user.setHeight(6.2);
 		user.setPlace("indian");
 		user.setMarriedStatus("Married");
 		user.setQualification("Under-Graduate");

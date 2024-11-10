@@ -8,99 +8,150 @@
 </head>
 
 <body>
-
 	<div id="content">
-
-		<div class="container text-center text-3xl">This is User List</div>
+		<div class="selfWritter text-2xl text-center p-1">All Matched Users Right here...</div>
 		<div
-			class="relative bg-white overflow-x-auto shadow-md sm:rounded-lg h-96 flex flex-col justify-between overflow-auto">
-			<table th:if="${pageContent != null && pageContent.totalElements > 0}"
-				class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+			class="relative bg-white dark:bg-gray-800 overflow-x-auto shadow-md sm:rounded-lg h-screen flex flex-col justify-between">
+			<table id="user-table" th:if="${pageContent != null && pageContent.totalElements > 0}"
+				class="min-w-full text-sm text-left text-gray-500 dark:text-gray-400">
 				<thead
-					class="text-xs text-gray-700 uppercase sticky top-0 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-					<tr>
-						<th scope="col" class="px-6 py-3">
-							User ID
-						</th>
-						<th scope="col" class="px-6 py-3">
-							Name
-						</th>
-						<th scope="col" class="px-6 py-3">
-							Gender
-						</th>
-						<th scope="col" class="px-6 py-3">
-							Religion
-						</th>
-						<th scope="col" class="px-6 py-3">
-							Caste
-						</th>
-						<th scope="col" class="px-6 py-3">
-							Age
-						</th>
-						<th scope="col" class="px-6 py-3">
-							Height
-						</th>
-						<th scope="col" class="px-6 py-3">
-							Married Status
-						</th>
-						<th scope="col" class="px-6 py-3">
-							Place of Living
-						</th>
-						<th scope="col" class="px-6 py-3">
-							Occupation
-						</th>
-						<th scope="col" class="px-6 py-3">
-							Phone Number
-						</th>
-
-						<th scope="col" class="px-6 py-3">
-							View Profile
-						</th>
+					class="text-xs text-gray-700 uppercase sticky top-0 bg-gray-50 dark:bg-gray-700 dark:text-gray-700">
+					<tr class="bg-blue-100 text-center">
+						<th scope="col" class="px-2 py-3"></th>
+						<th scope="col" class="px-2 py-3 text-orange">User</th>
+						<th scope="col" class="px-2 py-3 text-orange">Name</th>
+						<th scope="col" class="px-2 py-3 text-orange">Gender</th>
+						<th scope="col" class="px-2 py-3 text-orange">Religion</th>
+						<th scope="col" class="px-2 py-3 text-orange">Caste</th>
+						<th scope="col" class="px-2 py-3 text-orange">Age</th>
+						<th scope="col" class="px-2 py-3 text-orange">Height</th>
+						<th scope="col" class="px-2 py-3 text-orange">Married Status</th>
+						<th scope="col" class="px-2 py-3 text-orange">Place of Living</th>
+						<th scope="col" class="px-2 py-3 text-orange">Qualification</th>
+						<th scope="col" class="px-2 py-3 text-orange">Occupation</th>
+						<th scope="col" class="px-2 py-3 text-orange">Phone Number</th>
+						<th scope="col" class="px-2 py-3 text-orange">View Profile</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr data-th-object="${c}" data-th-each="c  : ${pageContent.getContent()}"
-						class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-						<td data-th-text="*{userId}"
-							class=" blur-sm px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"></td>
-						<td data-th-text="*{name}" class="blur-sm px-6 py-4"></td>
-						<td data-th-text="*{gender}" class="px-6 py-4"></td>
-						<td data-th-text="*{religion}" class="px-6 py-4"></td>
-						<td data-th-text="*{caste}" class="px-6 py-4"></td>
-						<td data-th-text="*{age}" class="px-6 py-4"></td>
-						<td data-th-text="*{height}" class="px-6 py-4"></td>
-						<td data-th-text="*{marriedStatus}" class="px-6 py-4"></td>
-						<td data-th-text="*{place}" class="px-6 py-4"></td>
-						<td data-th-text="*{occupation}" class="px-6 py-4"></td>
-						<td data-th-text="*{phoneNumber1}" class="blur-sm px-6 py-4"></td>
+						class="text-center odd:bg-white even:bg-gray-50 !important even:dark:bg-gray-800 odd:dark:bg-gray-900  border-b dark:border-gray-700">
+
+						<td class="px-2 py-2"></td>
+						<td class="px-2 py-2">
+							<div data-th-if="${!authOptional}">
+								<img class="blur-sm w-10 h-10 rounded-full" style="border: 2px solid #E47A2E;"
+									th:src="*{picture}"
+									onerror="this.onerror=null; this.src='https://res.cloudinary.com/dcrlfty5k/image/upload/v1729153915/yjllp8ag6uab4gdq7hog.png';"
+									alt="User Pic">
+							</div>
+							<div data-th-if="${authOptional}">
+								<img class="blur-sm w-10 h-10 rounded-full" style="border: 2px solid #E47A2E;"
+									th:src="*{picture}" th:if="${!isSubscriptionIsActive}"
+									onerror="this.onerror=null; this.src='https://res.cloudinary.com/dcrlfty5k/image/upload/v1729153915/yjllp8ag6uab4gdq7hog.png';"
+									alt="User Pic">
+								<img class="w-10 h-10 rounded-full" style="border: 2px solid #E47A2E;"
+									th:src="*{picture}" th:if="${isSubscriptionIsActive}"
+									onerror="this.onerror=null; this.src='https://res.cloudinary.com/dcrlfty5k/image/upload/v1729153915/yjllp8ag6uab4gdq7hog.png';"
+									alt="User Pic">
+							</div>
+							<p data-th-text="*{userId}" class="text-center text-gray-900 dark:text-white"></p>
+						</td>
+						<td data-th-text="*{name}" class="px-2 py-2"></td>
+						<td data-th-text="*{gender}" class="px-2 py-2"></td>
+						<td data-th-text="*{religion}" class="px-2 py-2"></td>
+						<td data-th-text="*{caste}" class="px-2 py-2"></td>
+						<td data-th-text="*{age}" class="px-2 py-2"></td>
+						<td data-th-text="*{height}" class="px-2 py-2"></td>
+						<td data-th-text="*{marriedStatus}" class="px-2 py-2"></td>
+						<td data-th-text="*{place}" class="px-2 py-2"></td>
+						<td data-th-text="*{qualification}" class="px-2 py-2"></td>
+						<td data-th-text="*{occupation}" class="px-2 py-2"></td>
+						<td>
+							<div data-th-if="${!authOptional}" data-th-text="*{phoneNumber1}" class="blur-sm px-2 py-2">
+							</div>
+							<div data-th-if="${authOptional}">
+								<span th:if="${!isSubscriptionIsActive}" data-th-text="*{phoneNumber1}"
+									class="blur-sm px-2 py-2"></span>
+								<span th:if="${loggedInUser.getEmail() == adminEmail}" data-th-text="*{phoneNumber1}"
+									class="px-2 py-2"></span>
+							</div>
+
+						</td>
 						<td class="px-6 py-4">
-							<a th:href="@{/paymentplans}"
-								class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Pay_Link</a>
+							<div data-th-if="${!authOptional}">
+								<a th:href="@{/paymentplans}"
+									class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+									<i class="fa-solid fa-credit-card"></i>
+								</a>
+							</div>
+
+							<div data-th-if="${authOptional}">
+								<a th:href="@{/paymentplans}" th:if="${!isSubscriptionIsActive}"
+									class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+									<i class="fa-solid fa-credit-card"></i>
+								</a>
+								<a th:href="@{'/user/'+*{userId}}" th:if="${isSubscriptionIsActive==true}"
+									class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+									<i class="fa-solid fa-eye"></i>
+								</a>
+							</div>
 						</td>
 					</tr>
 				</tbody>
 			</table>
 
-			<!-- pagination component  -->
-			<div data-th-if="${pageContent.totalElements>0}"
+
+			<!-- Pagination component -->
+			<div data-th-if="${pageContent.totalElements > 0}"
 				class="pagination_container bg-white dark:bg-gray-800 p-5 text-center">
 				<nav aria-label="Page navigation example">
 					<ul class="inline-flex -space-x-px text-base h-10">
 						<li data-th-unless="${pageContent.first}">
-							<a data-th-href="@{'/do-findmatch?size='+${pageSize}+'&page=' + ${pageContent.number-1}+'&sortBy='+${sortBy}+'&direction='+${direction}+'&gender='+${userFormDetails.gender}+'&religion='+${userFormDetails.religion}+'&caste='+${userFormDetails.caste}+'&minAge='+${userFormDetails.minAge}+'&maxAge='+${userFormDetails.maxAge}+'&minHeight='+${userFormDetails.minHeight}+'&maxHeight='+${userFormDetails.maxHeight}+'&marriedStatus='+${userFormDetails.marriedStatus}+'&place='+${userFormDetails.place}+'&occupation='+${userFormDetails.occupation}}"
-								class="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
+							<a data-th-href="@{'/do-findmatch?size=' + ${pageSize} + '&page=' + (${pageContent.number - 1}) + '&sortBy=' + ${sortBy} + '&direction=' + ${direction} + '&gender=' + ${userFormDetails.gender} + '&religion=' + ${userFormDetails.religion} + '&caste=' + ${userFormDetails.caste} + '&minAge=' + ${userFormDetails.minAge} + '&maxAge=' + ${userFormDetails.maxAge} + '&minHeight=' + ${userFormDetails.minHeight} + '&maxHeight=' + ${userFormDetails.maxHeight} + '&marriedStatus=' + ${userFormDetails.marriedStatus} + '&place=' + ${userFormDetails.place} + '&qualification=' + ${userFormDetails.qualification} + '&occupation=' + ${userFormDetails.occupation}}"
+								class="flex items-center justify-center px-4 h-10 leading-tight text-orange bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
 						</li>
-						<li data-th-each="index :  ${#numbers.sequence(0,pageContent.totalPages-1)}">
-							<a data-th-href="@{'/do-findmatch?size='+${pageSize}+'&page='+${index}+'&sortBy='+${sortBy}+'&direction='+${direction}+'&gender='+${userFormDetails.gender}+'&religion='+${userFormDetails.religion}+'&caste='+${userFormDetails.caste}+'&minAge='+${userFormDetails.minAge}+'&maxAge='+${userFormDetails.maxAge}+'&minHeight='+${userFormDetails.minHeight}+'&maxHeight='+${userFormDetails.maxHeight}+'&marriedStatus='+${userFormDetails.marriedStatus}+'&place='+${userFormDetails.place}+'&occupation='+${userFormDetails.occupation}}"
-								data-th-classappend="${index==pageContent.number? 'bg-blue-50  dark:bg-gray-600' : 'bg-white dark:bg-gray-800'}"
-								class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-								<span data-th-text="${index+1}"></span>
+						<li data-th-if="${startPage > 1}">
+							<a data-th-href="@{'/do-findmatch?size=' + ${pageSize} + '&page=0'}"
+								class="flex items-center justify-center px-4 h-10 leading-tight text-orange border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
+						</li>
+						<li data-th-if="${startPage > 2}">
+							<span class="flex items-center justify-center px-4 h-10 text-orange">...</span>
+						</li>
+						<li data-th-each="index : ${#numbers.sequence(startPage - 1, endPage - 2)}">
+							<a data-th-href="@{'/do-findmatch?size=' + ${pageSize} + '&page=' + ${index} + '&sortBy=' + ${sortBy} + '&direction=' + ${direction} + '&gender=' + ${userFormDetails.gender} + '&religion=' + ${userFormDetails.religion} + '&caste=' + ${userFormDetails.caste} + '&minAge=' + ${userFormDetails.minAge} + '&maxAge=' + ${userFormDetails.maxAge} + '&minHeight=' + ${userFormDetails.minHeight} + '&maxHeight=' + ${userFormDetails.maxHeight} + '&marriedStatus=' + ${userFormDetails.marriedStatus} + '&place=' + ${userFormDetails.place} + '&qualification=' + ${userFormDetails.qualification} + '&occupation=' + ${userFormDetails.occupation}}"
+								data-th-classappend="${index == pageContent.number ? 'bg-blue-50 dark:bg-gray-600' : 'bg-white dark:bg-gray-800'}"
+								class="flex items-center justify-center px-4 h-10 leading-tight text-orange border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+								<span data-th-text="${index + 1}"></span>
 							</a>
 						</li>
-
+						<li data-th-if="${endPage < totalPages - 1}">
+							<span class="flex items-center justify-center px-4 h-10 text-orange">...</span>
+						</li>
+						<li>
+							<a data-th-href="@{'/do-findmatch?size='+${pageSize}+'&page=' + ${totalPages-1}+'&sortBy='+${sortBy}+'&direction='+${direction}+'&gender='+${userFormDetails.gender}+'&religion='+${userFormDetails.religion}+'&caste='+${userFormDetails.caste}+'&minAge='+${userFormDetails.minAge}+'&maxAge='+${userFormDetails.maxAge}+'&minHeight='+${userFormDetails.minHeight}+'&maxHeight='+${userFormDetails.maxHeight}+'&marriedStatus='+${userFormDetails.marriedStatus}+'&place='+${userFormDetails.place}+'&qualification='+${userFormDetails.qualification}+'&occupation='+${userFormDetails.occupation}}"
+								class="flex items-center justify-center px-4 h-10 leading-tight text-orange border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+								<span data-th-text="${totalPages}"></span>
+							</a>
+						</li>
 						<li data-th-unless="${pageContent.last}">
-							<a data-th-href="@{'/do-findmatch?size='+${pageSize}+'&page=' + ${pageContent.number+1}+'&sortBy='+${sortBy}+'&direction='+${direction}+'&gender='+${userFormDetails.gender}+'&religion='+${userFormDetails.religion}+'&caste='+${userFormDetails.caste}+'&minAge='+${userFormDetails.minAge}+'&maxAge='+${userFormDetails.maxAge}+'&minHeight='+${userFormDetails.minHeight}+'&maxHeight='+${userFormDetails.maxHeight}+'&marriedStatus='+${userFormDetails.marriedStatus}+'&place='+${userFormDetails.place}+'&occupation='+${userFormDetails.occupation}}"
-								class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
+							<a data-th-href="@{'/do-findmatch?size=' + ${pageSize} + '&page=' + (${pageContent.number + 1}) + '&sortBy=' + ${sortBy} + '&direction=' + ${direction} + '&gender=' + ${userFormDetails.gender} + '&religion=' + ${userFormDetails.religion} + '&caste=' + ${userFormDetails.caste} + '&minAge=' + ${userFormDetails.minAge} + '&maxAge=' + ${userFormDetails.maxAge} + '&minHeight=' + ${userFormDetails.minHeight} + '&maxHeight=' + ${userFormDetails.maxHeight} + '&marriedStatus=' + ${userFormDetails.marriedStatus} + '&place=' + ${userFormDetails.place} + '&qualification=' + ${userFormDetails.qualification} + '&occupation=' + ${userFormDetails.occupation}}"
+								class="flex items-center justify-center px-4 h-10 leading-tight text-orange bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
+						</li>
+
+						<li>
+							<select onchange="updatePageSize(this)" aria-label="Page size selection"
+								class="flex items-center justify-center px-4 h-10 ml-3 leading-tight text-orange border border-orange hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white">
+								<!-- Placeholder Option -->
+								<option value="" disabled selected>PageSize</option>
+								<!-- Page Size Options with dynamic query parameters -->
+								<option value="10">10</option>
+								<option value="20">20</option>
+								<option value="30">30</option>
+								<option value="50">50</option>
+								<option value="100">100</option>
+								<option value="300">300</option>
+							</select>
 						</li>
 					</ul>
 				</nav>
@@ -110,14 +161,28 @@
 				data-th-if="${pageContent.totalElements<=0}">
 				No result found
 			</h1>
-
 		</div>
+
 	</div>
 
-	<script>
-		console.log("do-findmatch page");
-	</script>
 
+	<script>
+		function updatePageSize(select) {
+			// Get current URL parameters
+			let urlParams = new URLSearchParams(window.location.search);
+
+			// Get the new page size from the dropdown
+			let newSize = select.value;
+
+			// Update the 'size' query parameter and reset the page to 0
+			urlParams.set('size', newSize);
+			urlParams.set('page', '0');  // Reset to the first page when size changes
+
+			// Update the URL and redirect to maintain all current parameters
+			let newUrl = window.location.pathname + '?' + urlParams.toString();
+			window.location.href = newUrl;
+		}
+	</script>
 
 </body>
 

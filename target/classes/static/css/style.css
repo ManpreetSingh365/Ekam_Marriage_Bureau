@@ -6,24 +6,36 @@
 @import url('https://fonts.googleapis.com/css?family=Rajdhani:300,400,500,600,700');
 @import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
 
-/*****---------------------------------------- 1) font-family: 'Rajdhani', sans-serif;
- 2) font-family: 'Poppins', sans-serif;
- ----------------------------------------*****/
-
-
-/*--------------------------------------------------------------------- import Files ---------------------------------------------------------------------*/
-
-@import url(animate.min.css);
-@import url(normalize.css);
-@import url(icomoon.css);
-@import url(css/font-awesome.min.css);
-@import url(meanmenu.css);
-@import url(owl.carousel.min.css);
-@import url(swiper.min.css);
-@import url(slick.css);
-@import url(jquery.fancybox.min.css);
-@import url(jquery-ui.css);
-@import url(nice-select.css);
+:root {
+	--blue: #007bff;
+	--indigo: #6610f2;
+	--purple: #6f42c1;
+	--pink: #e83e8c;
+	--red: #dc3545;
+	--orange: #fd7e14;
+	--yellow: #ffc107;
+	--green: #28a745;
+	--teal: #20c997;
+	--cyan: #17a2b8;
+	--white: #fff;
+	--gray: #6c757d;
+	--gray-dark: #343a40;
+	--primary: #E47A2E;
+	--secondary: #EDF5F7;
+	--success: #28a745;
+	--info: #17a2b8;
+	--warning: #ffc107;
+	--danger: #dc3545;
+	--light: #FFFFFF;
+	--dark: #121F38;
+	--breakpoint-xs: 0;
+	--breakpoint-sm: 576px;
+	--breakpoint-md: 768px;
+	--breakpoint-lg: 992px;
+	--breakpoint-xl: 1200px;
+	--font-family-sans-serif: "Montserrat", sans-serif;
+	--font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
 
 /*--------------------------------------------------------------------- skeleton ---------------------------------------------------------------------*/
 
@@ -34,7 +46,7 @@
 }
 
 html {
-	scroll-behavior: smooth;
+	scroll-behavior: smooth !important;
 	overflow-x: hidden !important;
 }
 
@@ -221,7 +233,6 @@ img {
 	top: 0;
 }
 
-
 /*--------------------------- MY CSS -----------------------------*/
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap");
 
@@ -250,21 +261,23 @@ p {
 	margin-bottom: 4rem;
 }
 
-.pricing {
+/*.pricing {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 
 	.plan {
-		background-color: lightblue;
+		background-color: rgba(30, 64, 175, var(--tw-bg-opacity));
 		padding: 2.5rem;
 		margin: 12px;
+		color: white;
 		border-radius: 5px;
 		text-align: center;
 		transition: 0.3s;
 		cursor: pointer;
 
 		h2 {
+			color: white;
 			font-size: 22px;
 			margin-bottom: 12px;
 		}
@@ -286,7 +299,7 @@ p {
 				}
 
 				.fa-check-circle {
-					color: rgba(59, 130, 246, var(--tw-bg-opacity));
+					color: var(--orange);
 				}
 
 				.fa-times-circle {
@@ -300,7 +313,7 @@ p {
 			width: 80%;
 			padding: 6px 15px;
 			margin-top: 1rem;
-			background-color: rgba(30, 64, 175, var(--tw-bg-opacity));
+			background-color: var(--orange);
 			color: #fff;
 			border-radius: 5px;
 			cursor: pointer;
@@ -312,7 +325,7 @@ p {
 			width: 90%;
 			padding: 8px 18px;
 			margin-bottom: -1rem;
-			background-color: rgba(29, 78, 216, var(--tw-bg-opacity));
+			background-color: var(--orange);
 			color: #fff;
 			border-radius: 5px;
 			cursor: pointer;
@@ -320,16 +333,16 @@ p {
 		}
 
 		&.popular {
-			border: 2px solid rgba(30, 64, 175, var(--tw-bg-opacity));
+			border: 3px dotted var(--orange);
 			position: relative;
 			transform: scale(1.08);
 
-			span {
+			#mostpopular {
 				position: absolute;
 				top: -20px;
 				left: 50%;
 				transform: translateX(-50%);
-				background-color: rgba(30, 64, 175, var(--tw-bg-opacity));
+				background-color: var(--orange);
 				color: #fff;
 				padding: 4px 20px;
 				font-size: 18px;
@@ -338,11 +351,39 @@ p {
 		}
 
 		&:hover {
-			box-shadow: 5px 7px 67px -28px rgba(29, 78, 216, var(--tw-bg-opacity));
+			box-shadow: 10px 20px 100px 10px var(--orange);
 
 		}
 	}
 }
+*/
+
+/* Fancy hover shadow effect with a larger, softer glow */
+.hover-shadow-orange {
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.hover-shadow-orange:hover {
+    box-shadow: 0 0 30px rgba(255, 165, 0, 0.3), 
+                0 0 60px rgba(255, 165, 0, 0.2), 
+                0 0 100px rgba(255, 165, 0, 0.1);
+    transform: scale(1.05);
+}
+
+/* Fancy button hover effect */
+.fancy-button {
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Initial shadow */
+}
+
+.fancy-button:hover {
+    background-color: #e06c00; /* Slightly darker orange */
+	width: 10vw;
+    transform: scale(1.05); /* Slight scale-up effect */
+    box-shadow: 0 8px 20px rgba(255, 102, 0, 0.5), 
+                0 12px 30px rgba(255, 102, 0, 0.3); /* Enhanced shadow effect */
+}
+
 
 /*   Error-Page  */
 .emoji-404 {
@@ -788,9 +829,22 @@ a.text-primary:focus {
 	background-color: #2ca893;
 }
 
+#navbar-user a.active {
+	color: #E47A2E !important;
+	font-weight: bold;
+	border-bottom: 2px solid #E47A2E;
+}
 
-.active {
-	background-color: green;
+#navbar-cta a.active {
+	color: #E47A2E !important;
+	font-weight: bold;
+	border-bottom: 2px solid #E47A2E;
+}
+
+#navbar-temp a.active {
+	color: #E47A2E !important;
+	font-weight: bold;
+	border-bottom: 2px solid #E47A2E;
 }
 
 .inactive {
@@ -798,4 +852,82 @@ a.text-primary:focus {
 }
 
 
-/*===========Upload User Files===========*/
+/*===========loading-spinner===========*/
+/* Loading spinner style */
+.loading-spinner {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 9999;
+	/* Ensure it's above other content */
+	display: block;
+	/* Initially visible */
+}
+
+.spinner {
+	border: 4px solid rgba(255, 255, 255, 0.3);
+	border-top: 4px solid #3498db;
+	/* Spinner color */
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	animation: spin 1s linear infinite;
+}
+
+/* Spinner rotation animation */
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+/* Prevent scroll during loading */
+body.overflow-hidden {
+	overflow: hidden;
+}
+
+
+.border-orange {
+	border: 2px dashed #E47A2E;
+}
+
+.bg-orange {
+	background-color: #E47A2E;
+}
+
+
+/*     Bg-Image    */
+#bgImage10 {
+	background-image: url('https://e0.pxfuel.com/wallpapers/397/452/desktop-wallpaper-pk46-high-quality-blur-mobile-pc-iphone-and-more.jpg');
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	width: 100%;
+	height: 80vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+
+@media (max-width: 768px) {
+	#bgImage10 {
+		height: auto;
+	}
+}
+
+#bgImageAuto {
+	background-image: url('https://e0.pxfuel.com/wallpapers/397/452/desktop-wallpaper-pk46-high-quality-blur-mobile-pc-iphone-and-more.jpg');
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	height: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

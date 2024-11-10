@@ -1,47 +1,48 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-	th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}">
+<html lang="en" th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}">
 
 <head>
-	<title>Login Page</title>
-	<link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css" rel="stylesheet" />
+	<title>EMB</title>
 </head>
 
 <body>
 	<div id="content">
 		<div id="login">
-			<div class="container">
-				<div id="login-row" class="row justify-content-center align-items-center">
-					<div id="login-column" class="col-md-6">
-						<div id="login-box" style="height: 220px;" class="col-md-12">
 
-							<!--  email form -->
-							<div class="alert alert-success mt-3" role="alert">
-								We have sent OTP to your email ..
-							</div>
+			<div class="flex justify-center items-center min-h-screen">
+				<div class="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
 
-							<!-- message box  -->
-							<div th:if="${session.message}" class="container">
-								<div class="alert alert-danger my-2 text-center" role="alert">
-									<span th:text="${session.message}"></span>
-								</div>
-								<th:block th:text="${#session.removeAttribute('message')}"></th:block>
-							</div>
-
-							<form method="post" action="" th:action="@{/verify-otp}">
-								<div class="form-group">
-									<input name="otp" required="required" type="text" placeholder="Enter OTP here"
-										class="form-control" />
-								</div>
-
-								<div class="container text-center">
-									<button class="btn btn-success">Verify</button>
-								</div>
-							</form>
-						</div>
+					<!-- Email Sent Alert -->
+					<div
+						class="alert alert-success my-4 p-2 bg-green-100 border border-green-400 text-green-700 rounded-lg">
+						We have sent OTP to your Email...
 					</div>
+
+					<!-- Message Box -->
+					<div data-th-replace="~{message::messagebox}"></div>
+
+					<!-- OTP Form -->
+					<form method="post" action="" th:action="@{/verify-otp}" class="space-y-4">
+
+						<!-- OTP Input -->
+						<div class="form-group">
+							<input name="otp" required="required" type="text" placeholder="Enter OTP here"
+								class="w-full p-3 border border-gray-300 rounded-md text-gray-800 dark:text-black bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 text-black" />
+						</div>
+
+						<!-- Submit Button -->
+						<div class="text-center">
+							<button type="submit"
+								class="w-full py-3 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 transition">
+								Verify
+							</button>
+						</div>
+
+					</form>
+
 				</div>
 			</div>
+
 		</div>
 	</div>
 	<script>

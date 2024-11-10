@@ -127,8 +127,21 @@ public class UserServiceImpl implements UserService {
 	public List<String> getAllDistinctReligions() {
 		return userRepo.findDistinctReligion();
 	}
+
 	public List<String> getAllDistinctCastes(String religion) {
 		return userRepo.findDistinctCaste(religion);
+	}
+
+	public List<String> getAllDistinctQualification() {
+		return userRepo.findDistinctQualification();
+	}
+
+	public List<String> getAllDistinctOccupation() {
+		return userRepo.findDistinctOccupation();
+	}
+
+	public boolean isEmailUnique(String email) {
+		return userRepo.countEmail(email)==0;
 	}
 
 	@Override
@@ -138,14 +151,15 @@ public class UserServiceImpl implements UserService {
 		String caste = user.getCaste();
 		int minAge = user.getMinAge();
 		int maxAge = user.getMaxAge();
-		int minheight = user.getMinHeight();
-		int maxheight = user.getMaxHeight();
+		double minheight = user.getMinHeight();
+		double maxheight = user.getMaxHeight();
 		String marriedStatus = user.getMarriedStatus();
 		String place = user.getPlace();
+		String qualification = user.getQualification();
 		String occupation = user.getOccupation();
 
 		return userRepo.findUsersByCustomCriterialist(gender, religion, caste, minAge, maxAge, minheight, maxheight,
-				marriedStatus, place, occupation);
+				marriedStatus, place, qualification, occupation);
 	}
 
 	@Override
@@ -155,17 +169,18 @@ public class UserServiceImpl implements UserService {
 		String caste = user.getCaste();
 		int minAge = user.getMinAge();
 		int maxAge = user.getMaxAge();
-		int minheight = user.getMinHeight();
-		int maxheight = user.getMaxHeight();
+		double minheight = user.getMinHeight();
+		double maxheight = user.getMaxHeight();
 		String marriedStatus = user.getMarriedStatus();
 		String place = user.getPlace();
+		String qualification = user.getQualification();
 		String occupation = user.getOccupation();
 
 		Sort sort = direction.equals("desc") ? Sort.by(sortBy).descending() : Sort.by(sortBy).ascending();
 		Pageable pageable = PageRequest.of(page, size, sort);
 
 		return userRepo.findUsersByCustomCriteria(gender, religion, caste, minAge, maxAge, minheight, maxheight,
-				marriedStatus, place, occupation, pageable);
+				marriedStatus, place, qualification, occupation, pageable);
 	}
 
 	@Override

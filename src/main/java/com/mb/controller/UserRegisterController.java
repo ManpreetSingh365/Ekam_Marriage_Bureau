@@ -63,6 +63,19 @@ public class UserRegisterController {
 			return "register";
 		}
 
+		// Check If Email is Unique, Forward to Next Registration step... 
+		boolean isEmailValid = userService.isEmailUnique(userForm.getEmail());
+		System.out.println("1isEmailValid: " + isEmailValid);
+
+		if (!isEmailValid) {
+			System.out.println("2isEmailValid: " + isEmailValid);
+			Message message = Message.builder().content("Oops! This Email is taken. Kindly use Another One").type(MessageType.red).build();
+			session.setAttribute("message", message);
+			return "register";
+		}
+
+		System.out.println("isEmailValid=================> :" + isEmailValid);
+
 		UserFormDetails userFormDetails = new UserFormDetails();
 
 		session.setAttribute("userForm", userForm);
@@ -70,8 +83,11 @@ public class UserRegisterController {
 		model.addAttribute("userForm", userForm);
 		model.addAttribute("userFormDetails", userFormDetails);
 
-		// Fetch distinct caste categories from the database
+		// Fetch distinct relisions, castes categories from the database
+		List<String> religions = userService.getAllDistinctReligions();
 		List<String> castes = userService.getAllDistinctCastes(userFormDetails.getReligion());
+
+		model.addAttribute("religions", religions);
 		model.addAttribute("castes", castes);
 
 		return "registerdetails";
@@ -122,7 +138,9 @@ public class UserRegisterController {
 		user.setName(userFormDetails.getYourName());
 		user.setGender(userFormDetails.getGender());
 		user.setReligion(userFormDetails.getReligion());
-		user.setCaste(userFormDetails.getCaste());
+		user.setCaste(userFormDetails.getCaste().trim());
+		System.out.println("userFormDetails.getCaste(): " + userFormDetails.getCaste());
+		System.out.println("userFormDetails.getCaste().trim(): " + userFormDetails.getCaste().trim());
 		user.setSubcaste(userFormDetails.getSubcaste());
 
 		// Getting Age from DOB...

@@ -1,16 +1,16 @@
-<nav data-th-fragment="navbarTemp"
-	class="flex flex row navbar fixed-top shadow-sm navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5">
+<nav data-th-fragment="navbarTemp" id="navbarTemp"
+	class="flex flex row navbar fixed-top shadow-sm navbar-expand-lg bg-dark navbar-dark py-3 px-5 md:px-10">
+
 	<!-- Logo in Desktop View Only -->
-	<div class="d-none d-lg-block">
+	<div class="d-none lg:block">
 		<a data-th-href="@{'/findmatch'}" class="navbar-brand">
 			<h1 class="font-secondary text-white mb-n2"><span class="text-primary">Ekam</span> Marriage Bureau</h1>
 		</a>
 	</div>
 
 	<!-- Mobile View Logo -->
-	<a data-th-href="@{'/findmatch'}" class="navbar-brand d-block d-lg-none">
-		<h1 class="font-secondary text-white " style="margin-left: 7%;"><span class="text-primary">Ekam</span> Marriage
-			Bureau</h1>
+	<a data-th-href="@{'/findmatch'}" class="navbar-brand block lg:hidden">
+		<h1 class="font-secondary text-white ml-4"><span class="text-primary">Ekam</span> Marriage Bureau</h1>
 	</a>
 
 	<!-- Toggler Button for Mobile View -->
@@ -18,21 +18,24 @@
 		<span class="navbar-toggler-icon"></span>
 	</button>
 
+
 	<!-- Collapsed Navbar -->
-	<div class="collapse navbar-collapse bg-dark justify-content-between" id="navbarCollapse">
+	<div class="collapse navbar-collapse bg-dark lg:flex lg:justify-between lg:items-center w-full" id="navbarCollapse">
 
 
 		<!-- Navbar Links -->
-		<div class="navbar-nav max-w-md " style="margin: auto; text-align: center;">
+		<div id="navbar-temp" class="navbar-nav max-w-md " style="margin: auto; text-align: center;">
 			<a href="#home" class="nav-item nav-link active">Home</a>
 			<a href="#about" class="nav-item nav-link">About</a>
 			<a href="#gallery" class="nav-item nav-link">Gallery</a>
-			<a href="/paymentplans" class="nav-item nav-link">Payment Plans</a>
+			<a data-th-href="@{'/findmatch'}" class="nav-item nav-link">Find Match</a>
+			<a th:unless="${loggedInUser}" href="/paymentplans" class="nav-item nav-link">Payment Plans</a>
+			<a data-th-href="@{'/testimonials'}" class="nav-item nav-link">Testimonials</a>
 			<a href="#rsvp" class="nav-item nav-link">Contact</a>
 		</div>
 
 		<!-- Login and Signup Buttons -->
-		<div style="display: flex; gap: 1rem; justify-content: center; padding:  20px 0px">
+		<div th:unless="${loggedInUser}" style="display: flex; gap: 1rem; justify-content: center; padding:  20px 0px">
 			<div>
 				<a data-th-href="@{'/login'}" type="button" id="indexLogin"
 					class="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -46,6 +49,23 @@
 				</a>
 			</div>
 		</div>
-	</div>
+		<!-- User Profile(If Login) -->
+		<div th:if="${loggedInUser}" style="display: flex; gap: 1rem; justify-content: center; padding:  20px 0px">
 
+			<div>
+				<a data-th-href="@{'/user/logginprofile'}" type="button" id="indexRegister"
+					class="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+					<img th:src="${loggedInUser.picture}" width="25px"
+						onerror="this.onerror=null; this.src='https://manpreetsingh.vercel.app/_next/image?url=%2FImage-removebg.png&w=1080&q=75';"
+						class="w-8 h-8 rounded-full" alt="user photo">
+				</a>
+			</div>
+			<div>
+				<a data-th-href="@{'/user/logginprofile'}" type="button" id="indexLogin"
+					class="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+					<span data-th-text="${loggedInUser.name}"></span>
+				</a>
+			</div>
+		</div>
+	</div>
 </nav>

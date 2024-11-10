@@ -5,6 +5,7 @@
 <head>
 	<title>User List</title>
 	<link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css" rel="stylesheet" />
+
 </head>
 
 <body>
@@ -19,19 +20,19 @@
 					class="text-xs text-gray-700 uppercase sticky top-0 bg-gray-50 dark:bg-gray-700 dark:text-gray-700">
 					<tr class="bg-blue-100 text-center">
 						<th scope="col" class="px-2 py-3"></th>
-						<th scope="col" class="px-2 py-3">User</th>
-						<th scope="col" class="px-2 py-3">Name</th>
-						<th scope="col" class="px-2 py-3">Gender</th>
-						<th scope="col" class="px-2 py-3">Religion</th>
-						<th scope="col" class="px-2 py-3">Caste</th>
-						<th scope="col" class="px-2 py-3">Age</th>
-						<th scope="col" class="px-2 py-3">Height</th>
-						<th scope="col" class="px-2 py-3">Married Status</th>
-						<th scope="col" class="px-2 py-3">Place of Living</th>
-						<th scope="col" class="px-2 py-3">Occupation</th>
-						<th scope="col" class="px-2 py-3">Phone Number</th>
-						<th scope="col" class="px-2 py-3">View Profile</th>
-						<th scope="col" class="px-2 py-3">Authority Control</th>
+						<th scope="col" class="px-2 py-3 text-orange">User</th>
+						<th scope="col" class="px-2 py-3 text-orange">Name</th>
+						<th scope="col" class="px-2 py-3 text-orange">Gender</th>
+						<th scope="col" class="px-2 py-3 text-orange">Religion</th>
+						<th scope="col" class="px-2 py-3 text-orange">Caste</th>
+						<th scope="col" class="px-2 py-3 text-orange">Age</th>
+						<th scope="col" class="px-2 py-3 text-orange">Height</th>
+						<th scope="col" class="px-2 py-3 text-orange">Married Status</th>
+						<th scope="col" class="px-2 py-3 text-orange">Place of Living</th>
+						<th scope="col" class="px-2 py-3 text-orange">Occupation</th>
+						<th scope="col" class="px-2 py-3 text-orange">Phone Number</th>
+						<th scope="col" class="px-2 py-3 text-orange">View Profile</th>
+						<th scope="col" class="px-2 py-3 text-orange">Authority Control</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -40,9 +41,10 @@
 
 						<td class="px-2 py-2"></td>
 						<td class="px-2 py-2">
-							<img class="w-10 h-10 rounded-full" th:src="*{picture}"
-								onerror="this.onerror=null; this.src='https://manpreetsingh.vercel.app/_next/image?url=%2FImage-removebg.png&w=1080&q=75';"
-								alt="User Pic">
+							<img class="w-10 h-10 rounded-full border-orange" 
+							    th:src="*{picture}"
+							    onerror="this.onerror=null; this.src='https://res.cloudinary.com/dcrlfty5k/image/upload/v1729153915/yjllp8ag6uab4gdq7hog.png';"
+							    alt="User Pic">
 							<p data-th-text="*{userId}" class="text-gray-900 dark:text-white"></p>
 						</td>
 						<td data-th-text="*{name}" class="px-2 py-2"></td>
@@ -61,22 +63,30 @@
 								<i class="fa-solid fa-eye"></i>
 							</a>
 						</td>
-						<td class="px-2 py-2 flex gap-2">
-							<a th:unless="*{email} == ${adminEmail}" data-th-href="@{'/do-deleteimgadmin/'+*{userId}}"
+						<td class="px-2 py-2 flex gap-2 ">
+							<a th:unless="*{email} == ${adminEmail}" href="javascript:void(0);"
+								th:onclick="|confirmDeleteAccountByAdmin(event, '/do-deleteadmin/' + *{userId})|"
 								type="button"
-								class="hidden md:flex text-white bg-red-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 w-20 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-blue-800">Delete</a>
+								class="hidden md:flex text-white bg-red-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 w-11 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-blue-800">
+								<i class="fa-solid fa-trash mt-1"></i>
+							</a>
 							<div th:if="*{email} == ${adminEmail}">
 								<button type="button" onclick="exportData()"
 									class="px-3 py-2 bg-green-800 text-white rounded">Export</button>
 							</div>
 
-							<div id="subscription_change_button" th:unless="*{email} == ${adminEmail}">
+							<div id="subscription_change_button" th:unless="*{email} == ${adminEmail}" class="mt-2">
 								<a th:if="*{subscriptionIsActive}"
-									data-th-href="@{'/do-togglesubscriptionisactive/'+*{userId}}" type="button"
-									class="text-white bg-green-800 hover:bg-green-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 w-20 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-blue-800">Active</a>
+									class="text-white bg-green-800 hover:bg-green-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 w-20 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-blue-800"
+									th:onclick="|confirmSubscriptionChange('/do-togglesubscriptionisactive/' + *{userId}, true)|">
+									Active
+								</a>
+
 								<a th:unless="*{subscriptionIsActive}"
-									data-th-href="@{'/do-togglesubscriptionisactive/'+*{userId}}" type="button"
-									class="text-white bg-red-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 w-20 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-blue-800">Inactive</a>
+									class="text-white bg-red-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 w-20 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-blue-800"
+									th:onclick="|confirmSubscriptionChange('/do-togglesubscriptionisactive/' + *{userId}, false)|">
+									Inactive
+								</a>
 							</div>
 							<div>
 								<a data-th-href="@{'/view/userDetailsUpdateForm/'+*{userId}}" type="button"
@@ -94,34 +104,59 @@
 					<ul class="inline-flex -space-x-px text-base h-10">
 						<li data-th-unless="${pageContent.first}">
 							<a data-th-href="@{'/user/userlist?size='+${pageSize}+'&page=' + ${pageContent.number-1}}"
-								class="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
+								class="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-orange bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
 						</li>
 						<li data-th-if="${startPage > 1}">
 							<a data-th-href="@{'/user/userlist?size='+${pageSize}+'&page=0'}"
-								class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
+								class="flex items-center justify-center px-4 h-10 leading-tight text-orange border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
 						</li>
 						<li data-th-if="${startPage > 2}">
-							<span class="flex items-center justify-center px-4 h-10 text-gray-500">...</span>
+							<span class="flex items-center justify-center px-4 h-10 text-orange">...</span>
 						</li>
 						<li data-th-each="index : ${#numbers.sequence(startPage - 1, endPage - 2)}">
 							<a data-th-href="@{'/user/userlist?size='+${pageSize}+'&page='+${index}}"
 								data-th-classappend="${index == pageContent.number ? 'bg-blue-50 dark:bg-gray-600' : 'bg-white dark:bg-gray-800'}"
-								class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+								class="flex items-center justify-center px-4 h-10 leading-tight text-orange border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
 								<span data-th-text="${index + 1}"></span>
 							</a>
 						</li>
 						<li data-th-if="${endPage < totalPages - 1}">
-							<span class="flex items-center justify-center px-4 h-10 text-gray-500">...</span>
+							<span class="flex items-center justify-center px-4 h-10 text-orange">...</span>
 						</li>
 						<li>
 							<a data-th-href="@{'/user/userlist?size='+${pageSize}+'&page=' + ${totalPages-1}}"
-								class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+								class="flex items-center justify-center px-4 h-10 leading-tight text-orange border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
 								<span data-th-text="${totalPages}"></span>
 							</a>
 						</li>
 						<li data-th-unless="${pageContent.last}">
 							<a data-th-href="@{'/user/userlist?size='+${pageSize}+'&page=' + ${pageContent.number + 1}}"
-								class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
+								class="flex items-center justify-center px-4 h-10 leading-tight text-orange bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
+						</li>
+
+						<li>
+							<select onchange="window.location.href=this.value" aria-label="Page size selection"
+								class="flex items-center justify-center px-4 h-10 ml-3 leading-tight text-orange border border-orange hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white">
+								<!-- Placeholder Option -->
+								<option value="" disabled selected>PageSize</option>
+								<!-- Page Size Options -->
+								<option value="/user/userlist?size=10&page=0" th:selected="${pageSize == 10}">10
+								</option>
+								<option value="/user/userlist?size=50&page=0" th:selected="${pageSize == 50}">50
+								</option>
+								<option value="/user/userlist?size=100&page=0" th:selected="${pageSize == 100}">100
+								</option>
+								<option value="/user/userlist?size=500&page=0" th:selected="${pageSize == 500}">500
+								</option>
+								<option value="/user/userlist?size=1000&page=0" th:selected="${pageSize == 1000}">1000
+								</option>
+								<option value="/user/userlist?size=2000&page=0" th:selected="${pageSize == 2000}">2000
+								</option>
+								<option value="/user/userlist?size=3000&page=0" th:selected="${pageSize == 3000}">3000
+								</option>
+								<option value="/user/userlist?size=5000&page=0" th:selected="${pageSize == 5000}">5000
+								</option>
+							</select>
 						</li>
 					</ul>
 				</nav>
@@ -135,6 +170,7 @@
 
 	</div>
 
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 	<script src="https://cdn.jsdelivr.net/npm/@linways/table-to-excel@1.0.4/dist/tableToExcel.min.js"></script>
 	<script>
@@ -147,6 +183,42 @@
 				},
 			});
 		}
+
+		function confirmDeleteAccountByAdmin(event, url) {
+			Swal.fire({
+				title: 'Are you Sure to Delete?',
+				text: 'It\'ll Permanetly deleted, You Can\'t Revert this',
+				icon: 'warning',
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'Yes, delete it!'
+			}).then((result) => {
+				if (result.isConfirmed) {
+					// If the user confirms, redirect to the URL to trigger the delete action
+					window.location.href = url; // This triggers the @GetMapping method in your controller
+				}
+			});
+		}
+
+		function confirmSubscriptionChange(url, isActive) {
+			Swal.fire({
+				title: 'Are you wanna ToggleActive?',
+				text: 'By Clicking, You can Active/De-Active User Account',
+				icon: 'warning',
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: isActive ? 'Yes, deactivate it!' : 'Yes, activate it!'
+			}).then((result) => {
+				if (result.isConfirmed) {
+					// If the user confirms, navigate to the URL to trigger the controller action
+					window.location.href = url; // This triggers the @GetMapping method in your controller
+				}
+			});
+		}
+
+
 	</script>
 
 

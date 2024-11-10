@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -170,7 +171,7 @@ public class LoginUserCRUD {
 		userFormDetails.setYourName(userData.getName());
 		userFormDetails.setGender(userData.getGender());
 		userFormDetails.setReligion(userData.getReligion());
-		userFormDetails.setCaste(userData.getCaste());
+//		userFormDetails.setCaste(userData.getCaste());
 		userFormDetails.setSubcaste(userData.getSubcaste());
 
 		userFormDetails.setDateOfBirth(userData.getDateOfBirth());
@@ -210,6 +211,20 @@ public class LoginUserCRUD {
 		userFormDetails.setPhoneNumber2(userData.getPhoneNumber2());
 
 		userFormDetails.setFormFilledBy(userData.getFormFilledBy());
+
+		// Fetch distinct Religions, castes categories from the database
+		List<String> religions = userService.getAllDistinctReligions();
+		List<String> castes = userService.getAllDistinctCastes(userData.getReligion());
+
+		model.addAttribute("religions", religions);
+		model.addAttribute("castes", castes);
+
+		for (String val : religions) {
+			System.out.println(val);
+		}
+		for (String val : castes) {
+			System.out.println(val);
+		}
 
 		model.addAttribute("userFormDetails", userFormDetails);
 		model.addAttribute("userImages", userData.getImagesList());
@@ -389,9 +404,31 @@ public class LoginUserCRUD {
 		return "redirect:/user/userlist";
 	}
 
-	// Delete User Client Handler----->
 	@GetMapping("/do-deleteclient/{userId}")
 	public String deleteUserByClient(@PathVariable("userId") Long userId, Model model, HttpSession session) {
+		Optional<User> userOptional = this.userService.getUserById(userId);
+
+		if (userOptional.isEmpty()) {
+			// Handle case where user is not found
+			session.setAttribute("message", new Message("User not found", MessageType.red));
+			return "redirect:/user/userlist"; // Redirect to a safe page
+		}
+
+		User userData = userOptional.get();
+		userService.deleteUser(userData); // Deleting user from DB
+
+		// After deleting, invalidate the session to ensure the user is logged out
+		session.invalidate(); // Invalidate the session to remove any references to the user
+
+		// Optional: You can redirect to login page or a safe page after account
+		// deletion
+		session.setAttribute("message", new Message("Your account has been deleted successfully.", MessageType.green));
+		return "redirect:/login"; // Redirect to login page, or any page you want after deletion
+	}
+
+	// Delete User Admin Handler----->
+	@GetMapping("/do-deleteadmin/{userId}")
+	public String deleteUserByAdmin(@PathVariable("userId") Long userId, Model model, HttpSession session) {
 
 		System.out.println("deleteUser Handler..........");
 		Optional<User> userOptional = this.userService.getUserById(userId);
@@ -401,31 +438,12 @@ public class LoginUserCRUD {
 		userService.deleteUser(userData);
 
 		// Adding Message that User Deleted Successfully :)
-		Message message = Message.builder().content("Your Deleted Successful by Client :)").type(MessageType.green)
+		Message message = Message.builder().content("User Deleted Successful by Admin :)").type(MessageType.green)
 				.build();
 		session.setAttribute("message", message);
 
-		return "redirect:/register";
+		return "redirect:/user/userlist";
 	}
-
-//	// Delete User Admin Handler----->
-//	@GetMapping("/do-deleteadmin/{userId}")
-//	public String deleteUserByAdmin(@PathVariable("userId") Long userId, Model model, HttpSession session) {
-//
-//		System.out.println("deleteUser Handler..........");
-//		Optional<User> userOptional = this.userService.getUserById(userId);
-//		User userData = userOptional.get();
-//
-//		// delete the user
-//		userService.deleteUser(userData);
-//
-//		// Adding Message that User Deleted Successfully :)
-//		Message message = Message.builder().content("User Deleted Successful by Admin :)").type(MessageType.green)
-//				.build();
-//		session.setAttribute("message", message);
-//
-//		return "redirect:/user/userlist";
-//	}
 
 	@GetMapping("/do-deleteimgadmin/{userId}")
 	public String deleteAllUserImagesByAdmin(@PathVariable("userId") Long userId, Model model, HttpSession session) {

@@ -30,31 +30,39 @@ public interface UserRepo extends JpaRepository<User, Long> {
 	@Query("SELECT u FROM app_user u WHERE ( u.gender = :gender ) AND " + "( u.religion = :religion ) AND "
 			+ "( u.caste = :caste ) AND " + "( u.age BETWEEN :minAge AND :maxAge ) AND "
 			+ "( u.height BETWEEN :minHeight AND :maxHeight ) AND " + "( u.marriedStatus = :marriedStatus ) AND "
-			+ "( u.place = :place ) AND " + "( u.occupation = :occupation)")
+			+ "( u.place = :place ) AND ( u.qualification = :qualification) AND " + "( u.occupation = :occupation)")
 	List<User> findUsersByCustomCriterialist(@Param("gender") String gender, @Param("religion") String religion,
 			@Param("caste") String caste, @Param("minAge") int minAge, @Param("maxAge") int maxAge,
-			@Param("minHeight") int minHeight, @Param("maxHeight") int maxHeight,
+			@Param("minHeight") double minHeight, @Param("maxHeight") double maxHeight,
 			@Param("marriedStatus") String marriedStatus, @Param("place") String place,
-			@Param("occupation") String occupation);
+			@Param("qualification") String qualification, @Param("occupation") String occupation);
 
 	@Query("SELECT u FROM app_user u WHERE ( u.gender = :gender ) AND " + "( u.religion = :religion ) AND "
 			+ "( u.caste = :caste ) AND " + "( u.age BETWEEN :minAge AND :maxAge ) AND "
 			+ "( u.height BETWEEN :minHeight AND :maxHeight ) AND " + "( u.marriedStatus = :marriedStatus ) AND "
-			+ "( u.place = :place ) AND " + "( u.occupation = :occupation)")
+			+ "( u.place = :place ) AND ( u.qualification = :qualification) AND " + "( u.occupation = :occupation)")
 	Page<User> findUsersByCustomCriteria(@Param("gender") String gender, @Param("religion") String religion,
 			@Param("caste") String caste, @Param("minAge") int minAge, @Param("maxAge") int maxAge,
-			@Param("minHeight") int minHeight, @Param("maxHeight") int maxHeight,
+			@Param("minHeight") double minHeight, @Param("maxHeight") double maxHeight,
 			@Param("marriedStatus") String marriedStatus, @Param("place") String place,
-			@Param("occupation") String occupation, Pageable pageable);
+			@Param("qualification") String qualification, @Param("occupation") String occupation, Pageable pageable);
 
 	@EntityGraph(attributePaths = { "userId", "gender", "religion", "caste", "age", "height", "marriedStatus", "place",
-			"occupation" })
+			"qualification", "occupation" })
 	Page<User> findAll(Pageable pageable);
 
 	@Query("SELECT DISTINCT u.religion FROM app_user u WHERE (u.religion IS NOT NULL) ORDER BY u.religion ASC")
 	List<String> findDistinctReligion();
-	
+
 	@Query("SELECT DISTINCT u.caste FROM app_user u WHERE (u.caste IS NOT NULL) AND (u.religion = :religion) ORDER BY u.caste ASC")
 	List<String> findDistinctCaste(@Param("religion") String religion);
 
+	@Query("SELECT DISTINCT u.qualification FROM app_user u WHERE (u.qualification IS NOT NULL) ORDER BY u.qualification ASC")
+	List<String> findDistinctQualification();
+
+	@Query("SELECT DISTINCT u.occupation FROM app_user u WHERE (u.occupation IS NOT NULL) ORDER BY u.occupation ASC")
+	List<String> findDistinctOccupation();
+
+	@Query("SELECT COUNT(*) FROM app_user WHERE email = :email AND email IS NOT NULL")
+	int countEmail(@Param("email") String email);
 }

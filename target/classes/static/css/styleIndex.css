@@ -43,10 +43,18 @@
 }
 
 html {
+	scroll-behavior: smooth !important;
 	font-family: sans-serif;
 	line-height: 1.15;
 	-webkit-text-size-adjust: 100%;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.selfWritter {
+	font-family: "Edu VIC WA NT Beginner", cursive;
+	font-optical-sizing: auto;
+	font-weight: 800;
+	font-style: normal;
 }
 
 article,
@@ -4441,6 +4449,18 @@ input[type="button"].btn-block {
 	height: 5rem;
 	justify-content: space-between;
 	padding: 0.5rem 1rem;
+}
+
+#navbar-temp a.active {
+    color: #E47A2E !important;
+    font-weight: bold;
+    border-bottom: 2px solid #E47A2E;
+    border-radius: 5px 5px 0 0; /* Rounds the top-left and top-right corners */
+}
+
+#navbarTemp {
+	opacity: 0.8;
+
 }
 
 .navbar .container,
@@ -10914,7 +10934,7 @@ a.text-dark:focus {
 }
 
 .bg-gallery {
-	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/gallery.jpg), no-repeat center center;
+	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://pataaree.com/cdn/shop/articles/17231016035927e9d9a1c-56a0-4430-8f8d-c3d2f3846184_2048x.jpg?v=1726220319), no-repeat center center;
 	background-size: cover;
 }
 
@@ -10960,11 +10980,16 @@ a.text-dark:focus {
 	/* added transitions for border, width, and font-size */
 	border: none;
 	color: #fff;
-	width: 30%;
+	height: 3rem;
+	width: auto;
 	border-radius: 5px;
 	cursor: pointer;
-	font-size: 16px;
+	text-align: center;
+}
+
+#findMatchButton>p {
 	font-weight: bold;
+	font-size: 13px;
 }
 
 #findMatchButton:hover {
@@ -11031,7 +11056,7 @@ a.text-dark:focus {
 }
 
 #testimonialsBtn:hover {
-	background-color: darkorange;
+	background-color: var(--orange);
 	font-size: 1rem;
 	padding: 1rem 2rem;
 	border: black solid 2px;
@@ -11049,46 +11074,98 @@ a.text-dark:focus {
   box-shadow: 0 0 0 4px #1C64F2;
 }*/
 
-#myBtn {
-  display: none; /* Hide by default */
-  position: fixed;
-  bottom: 33px;
-  right: 20px; /* Align with padding/margin */
-  z-index: 99;
-  border: none;
-  outline: none;
-  background-color: transparent;
-  color: rgba(255, 0, 0, 0.678);
-  cursor: pointer;
-  padding: 15px;
+#mywhatsappBtn {
+	display: none;
+	/* Hide by default */
+	position: fixed;
+	bottom: 33px;
+	right: 20px;
+	z-index: 99;
+	border: none;
+	outline: none;
+	background-color: transparent;
+	color: rgba(255, 0, 0, 0.678);
+	cursor: pointer;
+	padding: 15px;
+	opacity: 0;
+	/* Start as invisible */
+	transform: scale(0.5);
+	/* Start with a smaller scale */
+	transition: opacity 0.5s ease, transform 0.5s ease;
+	/* Smooth transitions */
 }
 
-#myBtn img {
-  width: 100%; /* Make the image responsive */
-  height: auto; /* Maintain the aspect ratio */
-  max-width: 100px; /* Set a maximum width for the image */
+/* Make the image responsive */
+#mywhatsappBtn img {
+	width: 100%;
+	height: auto;
+	max-width: 100px;
+}
+
+/* Stronger Bounce-in Animation */
+@keyframes strongBounce {
+	0% {
+		opacity: 0;
+		transform: scale(0.5) rotate(45deg);
+		/* Start small and rotated */
+	}
+
+	30% {
+		opacity: 1;
+		transform: scale(1.4) rotate(-15deg);
+		/* Grow larger than the final size */
+	}
+
+	50% {
+		transform: scale(1.1) rotate(5deg);
+		/* Shrink a little */
+	}
+
+	70% {
+		transform: scale(1.2) rotate(-5deg);
+		/* Bounce larger and rotate */
+	}
+
+	85% {
+		transform: scale(1.05) rotate(2deg);
+		/* Slightly shrink back */
+	}
+
+	100% {
+		opacity: 1;
+		transform: scale(1) rotate(0deg);
+		/* Final scale and rotation */
+	}
+}
+
+/* Apply animation when the button is visible */
+.bounceIn {
+	animation: strongBounce 1s ease-out forwards;
+	/* 1s bounce-in animation with easing */
 }
 
 /* Media query for tablets and smaller devices */
 @media only screen and (max-width: 768px) {
-  #myBtn {
-    display: block; /* Show button on tablets */
-  }
-  
-  #myBtn img {
-    max-width: 60px; /* Adjust the maximum width for tablets */
-  }
+	#mywhatsappBtn {
+		display: block;
+	}
+
+	#mywhatsappBtn img {
+		max-width: 60px;
+		/* Adjust the size for tablets */
+	}
 }
 
 /* Media query for mobile devices */
 @media only screen and (max-width: 425px) {
-  #myBtn {
-    display: block; /* Ensure button is visible on mobile devices */
-  }
+	#mywhatsappBtn {
+		display: block;
+	}
 
-  #myBtn img {
-    max-width: 50px; /* Adjust the maximum width for mobile devices */
-  }
+	#mywhatsappBtn img {
+		max-width: 50px;
+		/* Adjust the size for mobile */
+	}
 }
 
 
@@ -11111,50 +11188,81 @@ a.text-dark:focus {
 }
 */
 
+/*=======================: My Own CSS:==========================*/
+.boder-orange {
+	border: 2px dashed var(--orange);
+}
+
+#map>iframe {
+
+	width: 100%;
+	height: 350px;
+	border: 2px dashed var(--orange);
+}
+
+@media (max-width: 767px) {
+	#map>iframe {
+		width: 100%;
+		height: 300px;
+	}
+}
+
+
 .alert {
-  display: flex;
-  align-items: center;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  font-size: 0.875rem; /* text-sm */
-  role: alert;
-  border-radius: 0.5rem; /* rounded-lg */
+	display: flex;
+	align-items: center;
+	padding: 1rem;
+	margin-bottom: 1rem;
+	font-size: 0.875rem;
+	/* text-sm */
+	role: alert;
+	border-radius: 0.5rem;
+	/* rounded-lg */
 }
 
 .alert svg {
-  flex-shrink: 0;
-  display: inline;
-  width: 1rem; /* w-4 */
-  height: 1rem; /* h-4 */
-  margin-right: 0.75rem; /* me-3 */
+	flex-shrink: 0;
+	display: inline;
+	width: 1rem;
+	/* w-4 */
+	height: 1rem;
+	/* h-4 */
+	margin-right: 0.75rem;
+	/* me-3 */
 }
 
 .alert .sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
 }
 
 .alert .message-content {
-  /* Additional styling for the message content */
+	/* Additional styling for the message content */
 }
 
 /* Example styles for different types */
 .alert.info {
-  color: #1d4ed8; /* text-blue-800 */
-  border: 1px solid #93c5fd; /* border-blue-300 */
-  background-color: #eff6ff; /* bg-blue-50 */
+	color: #1d4ed8;
+	/* text-blue-800 */
+	border: 1px solid #93c5fd;
+	/* border-blue-300 */
+	background-color: #eff6ff;
+	/* bg-blue-50 */
 }
 
 .alert.info.dark {
-  background-color: #1f2937; /* dark:bg-gray-800 */
-  color: #bfdbfe; /* dark:text-blue-400 */
-  border-color: #334155; /* dark:border-blue-800 */
+	background-color: #1f2937;
+	/* dark:bg-gray-800 */
+	color: #bfdbfe;
+	/* dark:text-blue-400 */
+	border-color: #334155;
+	/* dark:border-blue-800 */
 }
 
 /* Add styles for other types similarly (e.g., success, error) */

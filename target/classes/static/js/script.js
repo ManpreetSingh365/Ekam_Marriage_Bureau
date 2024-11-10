@@ -62,19 +62,26 @@ function changePageTheme(theme, oldTheme) {
 //change page change theme
 
 // Change color of navbar...............
-// Get all links
-const links = document.querySelectorAll('#navbar-cta ul li a');
+// Get all links in the navbar (for both guest and logged-in users)
+const allLinks = document.querySelectorAll('#navbar-cta a, #navbar-user a', '#navbar-temp a');
 
-// Get the current URL path
+// Get the current URL path (without query or fragment)
 const currentPath = window.location.pathname;
 
-// Add active class to the link that matches the current URL path
-links.forEach((link) => {
-	if (link.getAttribute('href') === currentPath) {
+// Remove 'active' class from all links initially
+allLinks.forEach((link) => {
+	link.classList.remove('active');
+});
+
+// Add the 'active' class to the link that matches the current URL path
+allLinks.forEach((link) => {
+	const linkHref = link.getAttribute('href');
+
+	// Check if the link's href matches the current path or if it starts with the current path
+	if (currentPath === linkHref || currentPath.startsWith(linkHref)) {
 		link.classList.add('active');
 	}
 });
-
 
 
 // User Picture Shown in Register Details ............
@@ -147,3 +154,48 @@ document.querySelector("#image_file_input").addEventListener("change", function(
 	}
 });
 
+
+
+
+/* ============: Sweet Alert :================*/
+function confirmLogout(event) {
+	event.preventDefault(); // Prevent the default anchor behavior (no redirect)
+
+	// SweetAlert confirmation
+	Swal.fire({
+		title: 'Are you wanna Logout?',
+		text: 'By Click, You\'ll be Logged Out!',
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Yes, Log me Out!',
+		cancelButtonText: 'Cancel'
+	}).then((result) => {
+		if (result.isConfirmed) {
+			// If the user confirms, redirect to the logout page
+			window.location.href = '/do-logout'; // Change this to your actual logout endpoint
+		}
+	});
+}
+
+function confirmDeleteAccount(event, url) {
+	event.preventDefault(); // Prevent the default anchor behavior (no redirect)
+
+	// SweetAlert confirmation
+	Swal.fire({
+		title: 'Are you Wanna, Delete your Account?',
+		text: 'This action will Permanently delete your account!',
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#d33',
+		cancelButtonColor: '#3085d6',
+		confirmButtonText: 'Yes, delete my account!',
+		cancelButtonText: 'Cancel'
+	}).then((result) => {
+		if (result.isConfirmed) {
+			// If the user confirms, redirect to the delete URL
+			window.location.href = url; // This will trigger the @GetMapping method for account deletion
+		}
+	});
+}

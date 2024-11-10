@@ -136,7 +136,6 @@ public class User implements UserDetails {
 	private String caste; // ramgharia, suri, jatt, bania, hindu
 	private String subcaste; // Bhamra...
 
-
 	private int minAge;
 //	private int age;
 	private int maxAge;
@@ -145,9 +144,9 @@ public class User implements UserDetails {
 	private Integer age;
 	private String brithTime;
 
-	private int minHeight;
+	private double minHeight;
 	private Double height;
-	private int maxHeight;
+	private double maxHeight;
 
 	private String marriedStatus;
 	private String place;

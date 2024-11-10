@@ -6,9 +6,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title data-th-replace="${title}">MB</title>
 
+	<!-- add icon link -->
+	<link rel="icon"
+		href="https://res.cloudinary.com/dcrlfty5k/image/upload/v1730366358/d459c434-00ea-4cff-9b7d-c7f18c7023e3.png"
+		type="image/x-icon" />
 
-
-<!--	<th:block th:if="${includeCss}">
+	<!--	<th:block th:if="${includeCss}">
 		<link th:href="@{'/css/output.css'}" rel="stylesheet" />
 		<link th:href="@{'/css/style.css'}" rel="stylesheet" />
 		<link th:href="@{'https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css'}" rel="stylesheet" />
@@ -42,12 +45,12 @@
 
 	<!-- commona header -->
 	<!--  user is logged in : navbar -->
-<!--	<div th:if="${loggedInUser}">
+	<!--	<div th:if="${loggedInUser}">
 		<div data-th-replace="~{user/user_navbar::user-navbar}"></div>
 	</div>
 -->
 	<!-- user is not logged : navbar -->
-	<div >
+	<div>
 		<div data-th-replace="~{navbarTemp :: navbarTemp}"></div>
 	</div>
 

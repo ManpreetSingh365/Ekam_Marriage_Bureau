@@ -11,8 +11,6 @@
 
 	<div id="content">
 
-
-
 		<div class="text-center flex flex-col p-5 ">
 			<h3 class="text-3xl font-bold text-gray-900 dark:text-white">
 				User Profile
@@ -21,7 +19,7 @@
 				( Below has All Right Data about the User )
 			</span>
 		</div>
-		<div id="userprofile"
+		<div id="userprofile"  
 			class="flex flex-row md:flex-col flex-now  w-full h-full border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
 
 
@@ -568,15 +566,19 @@
 							class="flex-1 min-w-20  p-3 border border-2 rounded-xl border-blue-300 hover:border-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-600">
 							<label
 								class="text-base text-sm font-bold text-gray-900 dark:text-white">PrimaryNumber:</label>
-							<span th:text="${user.phoneNumber1}"
+							<span th:text="${user.phoneNumber1}" th:if="${loggedInUser.getEmail() == adminEmail}"
 								class="text-sm uppercase text-gray-600 dark:text-white">phoneNumber1</span>
+							<span th:text="${user.phoneNumber1}" th:if="${loggedInUser.getEmail() != adminEmail}"
+								class="blur-sm text-sm uppercase text-gray-600 dark:text-white">phoneNumber1</span>
 						</div>
 						<div
 							class="flex-1 min-w-20  p-3 border border-2 rounded-xl border-blue-300 hover:border-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-600">
 							<label
 								class="text-base text-sm font-bold text-gray-900 dark:text-white">SecondaryNumber:</label>
-							<span th:text="${user.phoneNumber2}"
+							<span th:text="${user.phoneNumber2}" th:if="${loggedInUser.getEmail() == adminEmail}"
 								class="text-sm uppercase text-gray-600 dark:text-white">phoneNumber2</span>
+							<span th:text="${user.phoneNumber2}" th:if="${loggedInUser.getEmail() != adminEmail}"
+								class="blur-sm text-sm uppercase text-gray-600 dark:text-white">phoneNumber2</span>
 						</div>
 						<div
 							class="flex-1 min-w-20  p-3 border border-2 rounded-xl border-blue-300 hover:border-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-600">
@@ -591,7 +593,7 @@
 				<button type="button"
 					class="container text-center  bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 rounded-lg text-md px-8 py-2.5 ">
 					Click to Dial:
-					<span class="font-semibold underline"><a href="tel:9463071849">9463071849</a></span>
+					<span class="font-semibold underline"><a href="tel:8528167122">+91 85281 67122</a></span>
 				</button>
 
 				<!-- END: User-Details-Section -->

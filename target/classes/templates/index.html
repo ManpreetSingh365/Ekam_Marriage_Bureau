@@ -11,15 +11,10 @@
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="51">
-	<!-- Navbar Start -->
-	<!-- Navbar End -->
+
 	<div id="content">
-		<!--    <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa fa-arrow-circle-up"
-            aria-hidden="true"></i></button>-->
-
-		<a href="https://api.whatsapp.com/send?phone=6283439125" id="myBtn" title="Goto WhatsApp">
+		<a href="https://api.whatsapp.com/send?phone=8528167122" id="mywhatsappBtn" title="Goto WhatsApp">
 			<img src="img/whatsapp.png" alt="WhatsApp Icon">
-
 		</a>
 
 		<!-- Carousel Start -->
@@ -35,23 +30,15 @@
 								</h1>
 								<div class="d-inline-block border-top border-bottom border-light py-3 px-4">
 									<h3 class="text-uppercase font-weight-normal text-white m-0"
-										style="letter-spacing: 2px;">We're getting married</h3>
+										style="letter-spacing: 2px;">Your Ultimate Destination for Finding Your Dream
+										Soulmate</h3>
 								</div>
 								<br>
 
-
-								<div th:if="${loggedInUser}">
-									<a data-th-href="@{'/user/findmatch'}" id="findMatchButton" type="button"
-										class="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-										Find Match
-									</a>
-								</div>
-
-								<!-- user is not logged : navbar -->
-								<div th:unless="${loggedInUser}">
+								<div>
 									<a data-th-href="@{'/findmatch'}" id="findMatchButton" type="button"
 										class="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-										Find Match.
+										Find Match
 									</a>
 								</div>
 
@@ -59,7 +46,9 @@
 						</div>
 					</div>
 					<div class="carousel-item position-relative" style="height: 100vh; min-height: 400px;">
-						<img class="position-absolute w-100 h-100" src="img/carousel-2.jpg" style="object-fit: cover;">
+						<img class="position-absolute w-100 h-100"
+							src="https://i.pinimg.com/736x/a0/6a/6e/a06a6e9fd8689aff56f7c516d7c121d8.jpg"
+							style="object-fit: cover;">
 						<div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
 							<div class="p-3" style="max-width: 900px;">
 								<h1 class="display-1 font-secondary text-white mt-n3 mb-md-4"><span
@@ -67,22 +56,15 @@
 								</h1>
 								<div class="d-inline-block border-top border-bottom border-light py-3 px-4">
 									<h3 class="text-uppercase font-weight-normal text-white m-0"
-										style="letter-spacing: 2px;">We're getting married</h3>
+										style="letter-spacing: 2px;">Your Last Stop in the Search for Your Perfect Match
+									</h3>
 								</div>
 								<br>
 
-								<div th:if="${loggedInUser}">
-									<a data-th-href="@{'/user/findmatch'}" id="findMatchButton" type="button"
-										class="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-										Find Match
-									</a>
-								</div>
-
-								<!-- user is not logged : navbar -->
-								<div th:unless="${loggedInUser}">
+								<div>
 									<a data-th-href="@{'/findmatch'}" id="findMatchButton" type="button"
 										class="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-										Find Match.
+										Find Match
 									</a>
 								</div>
 
@@ -102,6 +84,7 @@
 				</a>
 			</div>
 		</div>
+
 		<!-- Carousel End -->
 
 
@@ -138,54 +121,51 @@
 					<div class="col-md-6 p-0 text-center text-md-right">
 						<div class="h-100 d-flex flex-column justify-content-center bg-secondary p-5">
 							<h3 class="mb-3">The Groom</h3>
-							<p>Lorem elitr magna stet rebum dolores sed. Est stet labore est lorem lorem at amet sea,
-								eos tempor rebum, labore amet ipsum sea lorem, stet rebum eirmod amet. Kasd clita kasd
-								stet amet est dolor elitr.</p>
+							<p>The groom stands beside his bride, ready to start this incredible journey of life
+								together. His role is not just to be a partner, but a protector, a friend, and a support
+								through every step of the way. With his love and promise to care for his bride, he too
+								is embarking on an exciting new chapter, full of joy and adventure.</p>
 							<h3 class="font-secondary font-weight-normal text-muted mb-3"><i
-									class="fa fa-male text-primary pr-3"></i>Jack</h3>
+									class="fa fa-male text-primary pr-3"></i>Majnu</h3>
 							<div class="position-relative">
-								<a class="btn btn-outline-primary btn-square mr-1" href="#"><i
-										class="fab fa-twitter"></i></a>
-								<a class="btn btn-outline-primary btn-square mr-1" href="#"><i
-										class="fab fa-facebook-f"></i></a>
-								<a class="btn btn-outline-primary btn-square mr-1" href="#"><i
-										class="fab fa-linkedin-in"></i></a>
-								<a class="btn btn-outline-primary btn-square" href="#"><i
-										class="fab fa-instagram"></i></a>
+								<a class="btn btn-outline-primary btn-square mr-1" style="width: 150px;" target="_blank" href="https://www.brideandgroom.co.nz/">
+									Read More <i class="fa fa-arrow-right" aria-hidden="true"></i>
+								</a>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-6 p-0" style="min-height: 400px;">
-						<img class="position-absolute w-100 h-100" src="img/about-1.jpg" style="object-fit: cover;">
+						<img class="position-absolute w-100 h-100"
+							src="https://s3-us-west-2.amazonaws.com/shaadiwishnewbucket/cea2b3a8-130d-fa97-b6f5-8c1937033ed0.jpg"
+							style="object-fit: cover;">
 					</div>
 				</div>
 				<div class="row m-0">
 					<div class="col-md-6 p-0" style="min-height: 400px;">
-						<img class="position-absolute w-100 h-100" src="img/about-2.jpg" style="object-fit: cover;">
+						<img class="position-absolute w-100 h-100" src="https://wallpapercave.com/wp/wp7599012.jpg"
+							style="object-fit: cover;">
 					</div>
 					<div class="col-md-6 p-0 text-center text-md-left">
 						<div class="h-100 d-flex flex-column justify-content-center bg-secondary p-5">
 							<h3 class="mb-3">The Bride</h3>
-							<p>Lorem elitr magna stet rebum dolores sed. Est stet labore est lorem lorem at amet sea,
-								eos tempor rebum, labore amet ipsum sea lorem, stet rebum eirmod amet. Kasd clita kasd
-								stet amet est dolor elitr.</p>
+							<p>The bride is the heart of the celebration, glowing with joy and excitement. Whether in a
+								beautiful wedding dress or traditional attire, she radiates love and beauty. But beyond
+								her appearance, the bride is a symbol of new beginnings and the warmth she brings into
+								her marriage. Her love, kindness, and dreams are what make the journey ahead so special.
+							</p>
 							<h3 class="font-secondary font-weight-normal text-muted mb-3"><i
-									class="fa fa-female text-primary pr-3"></i>Rose</h3>
+									class="fa fa-female text-primary pr-3"></i>Laila</h3>
 							<div class="position-relative">
-								<a class="btn btn-outline-primary btn-square mr-1" href="#"><i
-										class="fab fa-instagram"></i></a>
-								<a class="btn btn-outline-primary btn-square mr-1" href="#"><i
-										class="fab fa-facebook-f"></i></a>
-								<a class="btn btn-outline-primary btn-square mr-1" href="#"><i
-										class="fab fa-linkedin-in"></i></a>
-								<a class="btn btn-outline-primary btn-square" href="#"><i
-										class="fab fa-instagram"></i></a>
+								<a class="btn btn-outline-primary btn-square mr-1" style="width: 150px;" target="_blank" href="https://www.brideandgroom.co.nz/">
+									Read More <i class="fa fa-arrow-right" aria-hidden="true"></i>
+								</a>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
 		<!-- About End -->
 
 
@@ -193,65 +173,72 @@
 		<div class="container-fluid py-5" id="story">
 			<div class="container pt-5 pb-3">
 				<div class="section-title position-relative text-center">
-					<h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Story</h6>
-					<h1 class="font-secondary display-4">Our Love Story</h1>
+					<h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">True Story</h6>
+					<h1 class="font-secondary display-4">Our Ekam Marriage Bureau Story</h1>
 					<i class="far fa-heart text-dark"></i>
 				</div>
 				<div class="container timeline position-relative p-0">
 					<div class="row">
 						<div class="col-md-6 text-center text-md-right">
-							<img class="img-fluid mr-md-3" src="img/story-1.jpg" alt="">
+							<img class="img-fluid mr-md-3 boder-orange" width="300px" src="img/story-1.jpg" alt="">
 						</div>
 						<div class="col-md-6 text-center text-md-left">
 							<div class="h-100 d-flex flex-column justify-content-center bg-secondary p-4 ml-md-3">
-								<h4 class="mb-2">First Meet</h4>
-								<p class="text-uppercase mb-2">01 Jan 2050</p>
-								<p class="m-0">Lorem elitr magna stet rebum dolores sed. Est stet labore est lorem lorem
-									at amet sea, eos tempor rebum, labore amet ipsum sea lorem, stet rebum eirmod amet.
-									Kasd clita kasd stet amet est dolor elitr.</p>
+								<h4 class="mb-2">Easily Find Your Perfect Match</h4>
+								<p class="mb-2" style="text-decoration: double underline;">Connecting you with your
+									ideal partner</p>
+								<p class="m-0">At our marriage bureau, we simplify the process of finding your best
+									match. With a user-friendly platform and personalized services, we ensure that your
+									journey to love is smooth and enjoyable.</p>
+
 							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-6 text-center text-md-right">
 							<div class="h-100 d-flex flex-column justify-content-center bg-secondary p-4 mr-md-3">
-								<h4 class="mb-2">First Date</h4>
-								<p class="text-uppercase mb-2">01 Jan 2050</p>
-								<p class="m-0">Lorem elitr magna stet rebum dolores sed. Est stet labore est lorem lorem
-									at amet sea, eos tempor rebum, labore amet ipsum sea lorem, stet rebum eirmod amet.
-									Kasd clita kasd stet amet est dolor elitr.</p>
+								<h4 class="mb-2">Competitive and Unique Features</h4>
+								<p class=" mb-2" style="text-decoration: double underline;">No platform offers what we
+									do (except us)</p>
+								<p class="m-0">Our platform offers unique features that set us apart from others. We are
+									dedicated to providing you with the best tools and resources to make your search for
+									love as effective as possible.</p>
+
 							</div>
 						</div>
 						<div class="col-md-6 text-center text-md-left">
-							<img class="img-fluid ml-md-3" src="img/story-2.jpg" alt="">
+							<img class="img-fluid ml-md-3 boder-orange" width="300px" src="img/story-2.jpg" alt="">
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-6 text-center text-md-right">
-							<img class="img-fluid mr-md-3" src="img/story-3.jpg" alt="">
+							<img class="img-fluid mr-md-3 boder-orange" width="300px" src="img/story-3.jpg" alt="">
 						</div>
 						<div class="col-md-6 text-center text-md-left">
 							<div class="h-100 d-flex flex-column justify-content-center bg-secondary p-4 ml-md-3">
-								<h4 class="mb-2">Proposal</h4>
-								<p class="text-uppercase mb-2">01 Jan 2050</p>
-								<p class="m-0">Lorem elitr magna stet rebum dolores sed. Est stet labore est lorem lorem
-									at amet sea, eos tempor rebum, labore amet ipsum sea lorem, stet rebum eirmod amet.
-									Kasd clita kasd stet amet est dolor elitr.</p>
+								<h4 class="mb-2">Get in Touch with Us</h4>
+								<p class="underline mb-2" style="text-decoration: double underline;">We're here to
+									assist you with any queries</p>
+
+								<p class="m-0">Our team is here to assist you every step of the way. Whether you need
+									guidance with your profile or have specific queries, we are just a message away. Let
+									us help you on your journey to finding love.</p>
 							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-6 text-center text-md-right">
 							<div class="h-100 d-flex flex-column justify-content-center bg-secondary p-4 mr-md-3">
-								<h4 class="mb-2">Enagagement</h4>
-								<p class="text-uppercase mb-2">01 Jan 2050</p>
-								<p class="m-0">Lorem elitr magna stet rebum dolores sed. Est stet labore est lorem lorem
-									at amet sea, eos tempor rebum, labore amet ipsum sea lorem, stet rebum eirmod amet.
-									Kasd clita kasd stet amet est dolor elitr.</p>
+								<h4 class="mb-2">Our Genuine Reviews</h4>
+								<p class="mb-2" style="text-decoration: double underline;">Read and share your
+									experiences</p>
+								<p class="m-0">We take pride in the honest feedback from our users. You can read real
+									testimonials from people who have found love through our platform. Feel free to
+									share your own story with us as well!</p>
 							</div>
 						</div>
 						<div class="col-md-6 text-center text-md-left">
-							<img class="img-fluid ml-md-3" src="img/story-4.jpg" alt="">
+							<img class="img-fluid ml-md-3 boder-orange" width="300px" src="img/story-4.jpg" alt="">
 						</div>
 					</div>
 				</div>
@@ -269,37 +256,49 @@
 			</div>
 			<div class="owl-carousel gallery-carousel">
 				<div class="gallery-item">
-					<img class="img-fluid w-100" src="img/gallery-1.jpg" alt="">
+					<img class="img-fluid w-100"
+						src="https://lh3.googleusercontent.com/p/AF1QipPoKhP1OrzDr5YGcueLbqMNU3nhCpX_GH3dER7B=s1360-w1360-h1020"
+						alt="">
 					<a href="img/gallery-1.jpg" data-lightbox="gallery">
 						<i class="fa fa-2x fa-plus text-white"></i>
 					</a>
 				</div>
 				<div class="gallery-item">
-					<img class="img-fluid w-100" src="img/gallery-2.jpg" alt="">
+					<img class="img-fluid w-100"
+						src="https://getethnic.com/wp-content/uploads/2019/09/Punjabi-Wedding-Dress-for-Groom-1.jpg"
+						alt="">
 					<a href="img/gallery-2.jpg" data-lightbox="gallery">
 						<i class="fa fa-2x fa-plus text-white"></i>
 					</a>
 				</div>
 				<div class="gallery-item">
-					<img class="img-fluid w-100" src="img/gallery-3.jpg" alt="">
+					<img class="img-fluid w-100"
+						src="https://lh3.googleusercontent.com/p/AF1QipO4upH01LzJhvJKNNlio-Njb5R5w0hfCjGuxLk8=s1360-w1360-h1020"
+						alt="">
 					<a href="img/gallery-3.jpg" data-lightbox="gallery">
 						<i class="fa fa-2x fa-plus text-white"></i>
 					</a>
 				</div>
 				<div class="gallery-item">
-					<img class="img-fluid w-100" src="img/gallery-4.jpg" alt="">
+					<img class="img-fluid w-100"
+						src="https://www.studiomemorylane.com/wp-content/uploads/2019/06/Ethnic-Punjabi-wedding-couple-photography.jpg"
+						alt="">
 					<a href="img/gallery-4.jpg" data-lightbox="gallery">
 						<i class="fa fa-2x fa-plus text-white"></i>
 					</a>
 				</div>
 				<div class="gallery-item">
-					<img class="img-fluid w-100" src="img/gallery-5.jpg" alt="">
+					<img class="img-fluid w-100"
+						src="https://lh3.googleusercontent.com/p/AF1QipOXZcFFBHF-MJWGPyXMrZaQh3DQDSiHrSJPxEm2=s1360-w1360-h1020"
+						alt="">
 					<a href="img/gallery-5.jpg" data-lightbox="gallery">
 						<i class="fa fa-2x fa-plus text-white"></i>
 					</a>
 				</div>
 				<div class="gallery-item">
-					<img class="img-fluid w-100" src="img/gallery-6.jpg" alt="">
+					<img class="img-fluid w-100"
+						src="https://lh3.googleusercontent.com/p/AF1QipObqti6WkesLPTxoBMjHUgVNvL7B9zRJOvM4-Gr=s1360-w1360-h1020"
+						alt="">
 					<a href="img/gallery-6.jpg" data-lightbox="gallery">
 						<i class="fa fa-2x fa-plus text-white"></i>
 					</a>
@@ -313,38 +312,36 @@
 		<div class="container-fluid py-5" id="event">
 			<div class="container py-5">
 				<div class="section-title position-relative text-center">
-					<h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Event</h6>
-					<h1 class="font-secondary display-4">Our Wedding Event</h1>
+					<h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Exclusive Event</h6>
+					<h1 class="font-secondary display-4">Our Special "Unbelievable Offer" Event</h1>
 					<i class="far fa-heart text-dark"></i>
 				</div>
 				<div class="row justify-content-center">
 					<div class="col-md-6 text-center">
-						<h5 class="font-weight-normal text-muted mb-3 pb-3">Clita ipsum aliquyam dolor diam dolores
-							elitr nonumy. Rebum sea vero ipsum eirmod tempor kasd. Diam amet lorem erat eos sit lorem
-							elitr justo</h5>
+						<h5 class="font-weight-normal text-muted mb-3 pb-3">One lucky person could have their marriage
+							completely free! Join our lucky draw for a chance to win!</h5>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-6 border-right border-primary">
 						<div class="text-center text-md-right mr-md-3 mb-4 mb-md-0">
-							<img class="img-fluid mb-4" src="img/event-1.jpg" alt="">
-							<h4 class="mb-3">The Reception</h4>
-							<p class="mb-2">123 Street, New York, USA</p>
-							<p class="mb-0">12:00AM - 13:00PM</p>
+							<img class="img-fluid mb-4 boder-orange" src="img/event-1.jpg" width="300px" alt="">
+							<h4 class="mb-3">From Your First Encounter</h4>
+							<p class="mb-2">Anytime, Anywhere</p>
+							<p class="mb-0">Creating Memories Together</p>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="text-center text-md-left ml-md-3">
-							<img class="img-fluid mb-4" src="img/event-2.jpg" alt="">
-							<h4 class="mb-3">Wedding Party</h4>
-							<p class="mb-2">123 Street, New York, USA</p>
-							<p class="mb-0">12:00AM - 13:00PM</p>
+							<img class="img-fluid mb-4 boder-orange" src="img/event-2.jpg" width="300px" alt="">
+							<h4 class="mb-3">To the Beautiful Journey of Marriage</h4>
+							<p class="mb-2">All Members Welcome</p>
+							<p class="mb-0">Celebrating Every Faith</p>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<!-- Event End -->
+		</div> <!-- Event End -->
 
 
 		<!-- Friends & Family Start -->
@@ -352,7 +349,7 @@
 			<div class="container pt-5 pb-3">
 				<div class="section-title position-relative text-center">
 					<h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Testimonials</h6>
-					<h1 class="font-secondary display-4">Check out reviews or share yours<span
+					<h1 class="font-secondary display-4">Check out Reviews or Share yours<span
 							style='font-size:40px; margin-left: 10px;'>&#128519;</span></h1>
 					<i class="far fa-heart text-dark"></i>
 				</div>
@@ -362,16 +359,17 @@
 							<li class="btn btn-outline-primary font-weight-bold m-1 py-2 px-4" data-filter=".first">
 								Lastest</li>
 							<li class="btn btn-outline-primary font-weight-bold m-1 py-2 px-4" data-filter=".second">
-								Updated</li>
+								Mostly</li>
 						</ul>
 					</div>
 				</div>
 				<div class="row portfolio-container">
 					<div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
 						<div class="position-relative mb-2">
-							<img class="img-fluid w-100" src="img/groomsmen-1.jpg" alt="">
+							<img class="img-fluid w-100 boder-orange" style="height: 350px;"
+								src="https://i.pinimg.com/736x/72/5e/3a/725e3a0652c0212725cda41a5bf3d0c6.jpg" alt="">
 							<div class="bg-secondary text-center p-4">
-								<h4 class="mb-3">Manpreet Singh</h4>
+								<h4 class="mb-3">Rajvinder Singh</h4>
 								<p class="text-uppercase">Amritsar</p>
 								<div class="d-inline-block">
 									<a data-th-href="@{'/testimonials'}" type="button" id="testimonialsBtn"
@@ -384,10 +382,12 @@
 					</div>
 					<div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
 						<div class="position-relative mb-2">
-							<img class="img-fluid w-100" src="img/bridesmaid-1.jpg" alt="">
+							<img class="img-fluid w-100 boder-orange" style="height: 350px;"
+								src="https://i.pinimg.com/originals/09/63/c6/0963c6dc8c0eb7b0e7003605b47e3108.jpg"
+								alt="">
 							<div class="bg-secondary text-center p-4">
-								<h4 class="mb-3">Full Name</h4>
-								<p class="text-uppercase">Best Friend</p>
+								<h4 class="mb-3">Mehak</h4>
+								<p class="text-uppercase">Delhi</p>
 								<div class="d-inline-block">
 									<a data-th-href="@{'/testimonials'}" type="button" id="testimonialsBtn"
 										class="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -399,10 +399,12 @@
 					</div>
 					<div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
 						<div class="position-relative mb-2">
-							<img class="img-fluid w-100" src="img/groomsmen-2.jpg" alt="">
+							<img class="img-fluid w-100 boder-orange" style="height: 350px;"
+								src="https://images.unsplash.com/photo-1701602621993-ea89708f9480?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHB1bmphYmklMjBib3l8ZW58MHx8MHx8fDA%3D"
+								alt="">
 							<div class="bg-secondary text-center p-4">
-								<h4 class="mb-3">Full Name</h4>
-								<p class="text-uppercase">Best Friend</p>
+								<h4 class="mb-3">Karan</h4>
+								<p class="text-uppercase">Patiala</p>
 								<div class="d-inline-block">
 									<a data-th-href="@{'/testimonials'}" type="button" id="testimonialsBtn"
 										class="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -414,10 +416,11 @@
 					</div>
 					<div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
 						<div class="position-relative mb-2">
-							<img class="img-fluid w-100" src="img/bridesmaid-2.jpg" alt="">
+							<img class="img-fluid w-100 boder-orange" style="height: 350px;"
+								src="https://wallpapercave.com/wp/wp2737919.jpg" alt="">
 							<div class="bg-secondary text-center p-4">
-								<h4 class="mb-3">Full Name</h4>
-								<p class="text-uppercase">Best Friend</p>
+								<h4 class="mb-3">Reet</h4>
+								<p class="text-uppercase">Jalandhar</p>
 								<div class="d-inline-block">
 									<a data-th-href="@{'/testimonials'}" type="button" id="testimonialsBtn"
 										class="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -429,10 +432,11 @@
 					</div>
 					<div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
 						<div class="position-relative mb-2">
-							<img class="img-fluid w-100" src="img/groomsmen-3.jpg" alt="">
+							<img class="img-fluid w-100 boder-orange" style="height: 350px;"
+								src="https://i.pinimg.com/236x/c6/d2/73/c6d2739b27d6d09c1f4461a73366bcb7.jpg" alt="">
 							<div class="bg-secondary text-center p-4">
-								<h4 class="mb-3">Full Name</h4>
-								<p class="text-uppercase">Best Friend</p>
+								<h4 class="mb-3">Harsimran</h4>
+								<p class="text-uppercase">Chandigarh</p>
 								<div class="d-inline-block">
 									<a data-th-href="@{'/testimonials'}" type="button" id="testimonialsBtn"
 										class="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -444,10 +448,11 @@
 					</div>
 					<div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
 						<div class="position-relative mb-2">
-							<img class="img-fluid w-100" src="img/bridesmaid-3.jpg" alt="">
+							<img class="img-fluid w-100 boder-orange" style="height: 350px;"
+								src="https://i.pinimg.com/736x/6f/9a/e7/6f9ae7cc5e0a10b2c5442740065f4937.jpg" alt="">
 							<div class="bg-secondary text-center p-4">
-								<h4 class="mb-3">Full Name</h4>
-								<p class="text-uppercase">Best Friend</p>
+								<h4 class="mb-3">Nimrat Kaur</h4>
+								<p class="text-uppercase">Sangrur</p>
 								<div class="d-inline-block">
 									<a data-th-href="@{'/testimonials'}" type="button" id="testimonialsBtn"
 										class="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -467,7 +472,7 @@
 			<div class="container py-5" id="rsvpInside">
 				<div class="section-title position-relative text-center mb-4">
 					<h6 class="text-uppercase text-primary mb-3">Contact Us</h6>
-					<h1 class="font-secondary display-4">Feel free to write your custom query here <span
+					<h1 class="font-secondary display-4">Feel free to write your Custom Query here <span
 							style='font-size:40px; margin-left: 10px;'>&#128221;</span></h1>
 					<i class="far fa-heart text-dark"></i>
 				</div>
@@ -526,12 +531,12 @@
 						</div>
 					</div>
 					<!-- Map Column -->
-					<div class="col-md-6 -mt-6">
+					<div id="map" class="col-md-6 -mt-6">
 						<iframe
-							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d280.862425420179!2d74.89750034647673!3d31.61189272498204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39197d006540184b%3A0x9dac9d2d7a37b330!2sWahenoor%20Enterprises!5e0!3m2!1sen!2sin!4v1724492743236!5m2!1sen!2sin"
-							width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-							referrerpolicy="no-referrer-when-downgrade"></iframe>
+							src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13591.209328821878!2d74.8976181!3d31.6118757!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39197c9532f7f293%3A0x4c793674ff4845c7!2sekam%20marriage%20bureau!5e0!3m2!1sen!2sin!4v1731097694670!5m2!1sen!2sin"
+							allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 					</div>
+
 				</div>
 			</div>
 		</div>

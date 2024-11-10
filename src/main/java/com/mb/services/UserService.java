@@ -40,5 +40,13 @@ public interface UserService {
 	public void saveFile(MultipartFile file);
 
 	public List<String> getAllDistinctReligions();
+
 	public List<String> getAllDistinctCastes(String religion);
+
+	public List<String> getAllDistinctQualification();
+
+	public List<String> getAllDistinctOccupation();
+
+	public boolean isEmailUnique(String email);
+
 }
