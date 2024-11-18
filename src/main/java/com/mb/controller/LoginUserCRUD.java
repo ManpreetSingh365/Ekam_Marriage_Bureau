@@ -243,6 +243,10 @@ public class LoginUserCRUD {
 		String username = Helper.getEmailOfLoggedInUser(authentication);
 		User userData = userService.getUserByEmail(username);
 
+		if (!agreement) {
+			throw new Exception("You must agree to the terms and conditions.");
+		}
+
 		// update the contact
 		if (bindingResult.hasErrors()) {
 			return "user/update_user_view";

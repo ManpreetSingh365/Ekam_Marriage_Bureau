@@ -59,5 +59,6 @@ com\mb\helpers\Message$MessageBuilder.class
 com\mb\config\ThymeleafConfig.class
 com\mb\services\impl\SecurityCustomUserDetailService.class
 com\mb\entities\ErrorResponse.class
+com\mb\controller\TestimonialController.class
 com\mb\helpers\FileCRUD$1.class
 com\mb\helpers\UserDefaultValues.class

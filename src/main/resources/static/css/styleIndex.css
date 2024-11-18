@@ -4452,10 +4452,11 @@ input[type="button"].btn-block {
 }
 
 #navbar-temp a.active {
-    color: #E47A2E !important;
-    font-weight: bold;
-    border-bottom: 2px solid #E47A2E;
-    border-radius: 5px 5px 0 0; /* Rounds the top-left and top-right corners */
+	color: #E47A2E !important;
+	font-weight: bold;
+	border-bottom: 2px solid #E47A2E;
+	border-radius: 5px 5px 0 0;
+	/* Rounds the top-left and top-right corners */
 }
 
 #navbarTemp {
@@ -10904,10 +10905,14 @@ a.text-dark:focus {
 .gallery-item {
 	position: relative;
 	overflow: hidden;
+	margin: 0px 10px;
 }
 
 .gallery-item img {
 	transition: .5s;
+	border-radius: 10px;
+	height: 320px;
+	border: 2px dashed var(--orange);
 }
 
 .gallery-item:hover img {

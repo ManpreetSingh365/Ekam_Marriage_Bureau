@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
 	changeTheme();
 });
 
+
+
 //TODO:
 function changeTheme() {
 	//set to web page

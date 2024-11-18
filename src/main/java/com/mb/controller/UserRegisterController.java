@@ -63,13 +63,14 @@ public class UserRegisterController {
 			return "register";
 		}
 
-		// Check If Email is Unique, Forward to Next Registration step... 
+		// Check If Email is Unique, Forward to Next Registration step...
 		boolean isEmailValid = userService.isEmailUnique(userForm.getEmail());
 		System.out.println("1isEmailValid: " + isEmailValid);
 
 		if (!isEmailValid) {
 			System.out.println("2isEmailValid: " + isEmailValid);
-			Message message = Message.builder().content("Oops! This Email is taken. Kindly use Another One").type(MessageType.red).build();
+			Message message = Message.builder().content("Oops! This Email is taken. Kindly use Another One")
+					.type(MessageType.red).build();
 			session.setAttribute("message", message);
 			return "register";
 		}
@@ -99,6 +100,10 @@ public class UserRegisterController {
 			BindingResult bindingResult, @RequestParam(value = "agreement", defaultValue = "false") boolean agreement,
 			@RequestParam(value = "userImages") List<MultipartFile> userImages, Model model, HttpSession session)
 			throws Exception {
+
+		if (!agreement) {
+			throw new Exception("You must agree to the terms and conditions.");
+		}
 
 		// Fetch Form-Data from UserForm to bind with Model_Object by @ModelAttribute
 		System.out.println("Processing Process do-register Handler...");

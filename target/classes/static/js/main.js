@@ -83,9 +83,9 @@
 	});
 
 
-	// Gallery carousel
 	$(".gallery-carousel").owlCarousel({
-		autoplay: false,
+		autoplay: true,           // Enable autoplay
+		autoplayTimeout: 2000,     // Set interval for autoplay (2 seconds here)
 		smartSpeed: 1500,
 		dots: false,
 		loop: true,
@@ -95,23 +95,44 @@
 			'<i class="fa fa-angle-right" aria-hidden="true"></i>'
 		],
 		responsive: {
-			0: {
-				items: 1
-			},
-			576: {
-				items: 2
-			},
-			768: {
-				items: 3
-			},
-			992: {
-				items: 4
-			},
-			1200: {
-				items: 5
-			}
+			0: { items: 1 },
+			576: { items: 2 },
+			768: { items: 3 },
+			992: { items: 4 },
+			1200: { items: 5 }
 		}
 	});
+
+	/*	// Gallery carousel
+		$(".gallery-carousel").owlCarousel({
+			autoplay: false,
+			smartSpeed: 1500,
+			dots: false,
+			loop: true,
+			nav: true,
+			navText: [
+				'<i class="fa fa-angle-left" aria-hidden="true"></i>',
+				'<i class="fa fa-angle-right" aria-hidden="true"></i>'
+			],
+			responsive: {
+				0: {
+					items: 1
+				},
+				576: {
+					items: 2
+				},
+				768: {
+					items: 3
+				},
+				992: {
+					items: 4
+				},
+				1200: {
+					items: 5
+				}
+			}
+		});
+	*/
 
 })(jQuery);
 
@@ -124,13 +145,13 @@ var mybutton = document.getElementById("mywhatsappBtn");
 window.onscroll = function() { scrollFunction() };
 
 function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    mybutton.style.display = "block";
-    mybutton.classList.add('bounceIn'); // Add animation when button appears
-  } else {
-    mybutton.style.display = "none";
-    mybutton.classList.remove('bounceIn'); // Remove animation when button is hidden
-  }
+	if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+		mybutton.style.display = "block";
+		mybutton.classList.add('bounceIn'); // Add animation when button appears
+	} else {
+		mybutton.style.display = "none";
+		mybutton.classList.remove('bounceIn'); // Remove animation when button is hidden
+	}
 }
 /*// When the user clicks on the button, scroll to the top of the document
 function topFunction() {

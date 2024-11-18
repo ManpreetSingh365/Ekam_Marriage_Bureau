@@ -42,8 +42,6 @@ import org.springframework.web.servlet.view.RedirectView; // Import this class
 @Controller
 public class PageController {
 
-	@Autowired
-	private TestimonialsService testimonialsService;
 
 	@Autowired
 	private UserService userService;
@@ -173,41 +171,4 @@ public class PageController {
 
 		return "register";
 	}
-
-	@RequestMapping("/testimonials")
-	public String Testimonials(Model model) {
-
-		List<Testimonials> testimonialsAll = testimonialsService.getAllTestimonials();
-		// Reverse the list
-		Collections.reverse(testimonialsAll);
-
-		model.addAttribute("testimonials", testimonialsAll);
-
-		return "testimonials";
-	}
-
-	@PostMapping("/do-testimonials")
-	public String processTestimonials(@RequestParam("name") String name, @RequestParam("review") String review,
-			@RequestParam(value = "rating", defaultValue = "5") int rating, Model model, HttpSession session) {
-
-//		if (bindingResult.hasErrors()) {
-//			System.out.println("\n ---> processRegisteration\n" + bindingResult.toString());
-//			return "Testimonials";
-//		}
-
-		Testimonials testimonials = new Testimonials();
-
-		testimonials.setName(name);
-		testimonials.setReview(review);
-		testimonials.setRating(rating);
-
-		Testimonials savedTestimonials = testimonialsService.saveTestimonials(testimonials);
-
-		// Adding Message that Register Successfully :)
-		Message message = Message.builder().content("Your Review Add Successful :)").type(MessageType.green).build();
-		session.setAttribute("message", message);
-
-		return "redirect:/testimonials";
-	}
-
 }

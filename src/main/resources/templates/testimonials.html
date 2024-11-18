@@ -3,7 +3,7 @@
 
 <head>
 	<title>Testimonials</title>
-	
+
 	<link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css" rel="stylesheet" />
 </head>
 
@@ -171,6 +171,16 @@
 							<div class="relative gradient-border group">
 								<div
 									class="p-6 space-y-6 leading-none rounded-lg bg-slate-800 ring-1 ring-gray-900/5 dark:bg-gray-800 dark:ring-gray-900">
+									<div class="flex flex-row-reverse">
+
+										<div data-th-if="${authOptional}">
+											<a data-th-if="${email} == ${adminEmail}"
+											data-th-href="@{/do-deletetestimonial/{reviewId}(reviewId=*{reviewId})}"
+												class="font-medium text-red-600 dark:text-red-500 hover:underline">
+												<i class="fa-solid fa-trash mt-1  text-2xl"></i>
+											</a>											
+										</div>
+									</div>
 									<svg class="w-4 h-4 mx-auto mb-3 text-gray-400 dark:text-gray-600"
 										aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
 										viewBox="0 0 18 14">
